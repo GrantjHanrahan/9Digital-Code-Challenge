@@ -40,7 +40,41 @@ Language/ Framework: Node.js, Express.js
 
 Testing from terminal: curl -d "@payload.json" -H "Content-Type: application/json" -X POST http://localhost:8080/
 
-Testing from browser: curl -d "@payload.json" -H "Content-Type: application/json" -X POST https://nine-digital.herokuapp.com
+curl -d "@payload.json" -H "Content-Type: application/json" -X POST https://nine-digital.herokuapp.com
+
+Testing from browser:
+
+fetch('https://nine-digital.herokuapp.com/', {
+  method: 'post',
+  headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    payload: [
+    {
+    country: "UK",
+    description: "What's life like when you have enough children to field your own football team?",
+    drm: true,
+    episodeCount: 3,
+    genre: "Reality",
+    image: {
+    showImage: "http://mybeautifulcatchupservice.com/img/shows/16KidsandCounting1280.jpg"
+    },
+    language: "English",
+    nextEpisode: null,
+    primaryColour: "#ff7800",
+    seasons: [
+    {
+    slug: "show/16kidsandcounting/season/1"
+    }
+    ],
+    slug: "show/16kidsandcounting",
+    title: "16 Kids and Counting",
+    tvChannel: "GEM"
+    }]})
+    }).then(res=>res.json())
+      .then(res => console.log(res));
 
 Challenges:
 - Main challenge was in understanding the steps associated with the JSON POST and responding with the required output
